@@ -1,1 +1,243 @@
 @import "bootstrap/scss/bootstrap";
+
+$grayMediumLight: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; 
+}
+
+/* universal */
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  overflow-y: scroll;
+}
+
+body {
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  padding-top: 100px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  background: #f8f9fd;
+  color: gray; 
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1, h2, h3 {
+    margin-bottom: 40px;
+  }
+  a {
+    color: rgb(37, 109, 197);
+  }
+}
+
+/* header */
+#logo {
+  float: left;
+  margin-right: 30px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5 {
+  line-height: 1;
+  font-weight: 400;
+  font-family: Arial, sans-serif;
+  color: #000;
+  margin-top: 0;
+  margin-bottom: 0.5rem; 
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#error_explanation {
+  color:#f00;
+  ul {
+    list-style: none;
+    margin: 0 10px 18px 0;
+  }
+}
+
+.actions {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .60; 
+}
+
+.actions:hover {
+  color: #000;
+  text-decoration: none; 
+}
+
+.actions:not(:disabled):not(.disabled):hover, .actions:not(:disabled):not(.disabled):focus {
+  opacity: .90; 
+}
+
+button.actions {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; 
+}
+
+a.actions.disabled {
+  pointer-events: none; 
+}
+
+.table-wrap {
+  overflow-x: scroll; 
+}
+
+.table {
+  min-width: 1000px !important;
+  -webkit-box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29);
+  -moz-box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29);
+  box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29); 
+}
+  
+.table thead th {
+  border: none;
+  padding: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  color: gray;
+}
+  
+.table thead tr {
+  background: #fff;
+  border-bottom: 3px solid #eceffa; 
+}
+  
+.table tbody tr {
+  margin-bottom: 10px;
+  border-bottom: 3px solid #f8f9fd; 
+}
+  
+.table tbody tr:last-child {
+  border-bottom: 0; 
+}
+
+.table tbody th, .table tbody td {
+  border: none;
+  padding: 30px;
+  font-size: 16px;
+  background: #fff;
+  vertical-align: middle;
+}
+
+.table tbody td.status span,
+.table tbody td.status a {
+  position: relative;
+  border-radius: 20px;
+  padding: 7px 12px 7px 12px;
+}
+
+.table tbody td.status span:after {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 10px;
+  height: 10px;
+  content: '';
+  border-radius: 50%; 
+}
+
+.table tbody td.status .completed {
+  background: #cff6df;
+  color: #1b8d45;
+}
+
+//cff6dd
+
+.table tbody td.status .uncompleted {
+  background: #fdecc0;
+  color: #b38b07;
+}
+
+.uncompleted:not(:disabled):not(.disabled):hover, .actions:not(:disabled):not(.disabled):focus {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+  background: #ffe49f;
+  color: #916f02;
+}
+
+.table tbody td .actions span {
+  font-size: 15px;
+  margin: 5px;
+  color: #ff5d70; 
+}
+
+a {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+  color: #4092c1; 
+}
+
+a:hover, a:focus {
+  text-decoration: none !important;
+  outline: none !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #37586b;
+}
+
