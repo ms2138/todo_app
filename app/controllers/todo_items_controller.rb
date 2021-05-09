@@ -22,6 +22,14 @@ class TodoItemsController < ApplicationController
   def edit
   end
 
+  def complete
+    @todo_item = @todo_list.todo_items.find(params[:id])
+    @todo_item.update_attribute(:completed_at, Time.now)
+    respond_to do |format|
+      format.html { redirect_to todo_list_todo_items_path, flash: { success: "Todo item marked as complete." } }
+    end
+  end 
+
   def url_options
     { todo_list_id: params[:todo_list_id] }.merge(super)
   end
