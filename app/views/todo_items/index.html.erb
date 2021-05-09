@@ -1,2 +1,55 @@
-<h1>TodoItems#index</h1>
-<p>Find me in app/views/todo_items/index.html.erb</p>
+<% provide(:title, 'Todo Items') %>
+
+<h1><%= @todo_list.title %></h1>
+
+<div class="row">
+  <div class="col-md-12">
+  <% if @todo_list.todo_items.present? %>
+    <div class="table-responsive-lg">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Content</th>
+            <th>Completed</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @todo_list.todo_items.each do |todo_item| %>
+            <tr id="<%= dom_id(todo_item)%>">
+              <td> <%= todo_item.content %> </td>
+              <td class="status">
+                <% if todo_item.completed? %>
+                  <span class="completed">
+                    <%= todo_item.completed_at.to_formatted_s(:month_day_and_year_time) %>
+                  </span>
+                  
+                <% else %>
+                  <%= link_to 'Mark Complete', complete_todo_list_todo_item_path(todo_item), method: :patch, class: "uncompleted" %>
+                <% end %>
+              </td>
+              <td class="d-flex align-items-center"> 
+                <%= link_to edit_todo_list_todo_item_path(todo_item), class: "actions", alt: 'Edit', title: 'Edit' do %> 
+                  <span><i class="fa fa-edit" aria-hidden="true"></i></span>
+                <% end %>
+                <%= link_to [@todo_list, todo_item], class: "actions", method: :delete, data: { confirm: 'Are you sure you want to delete todo item?' }, alt: 'Delete', title: 'Delete' do %>
+                  <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= link_to 'New Todo Item', new_todo_list_todo_item_path, class: "btn btn-primary" %>
+    <% else %>
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">No todo items</h5>
+          <p class="card-text">Please click the button to create a new todo item.</p>
+          <%= link_to 'New Todo Item', new_todo_list_todo_item_path, class: "btn btn-primary center" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
