@@ -22,6 +22,10 @@ class TodoItemsController < ApplicationController
   def edit
   end
 
+  def url_options
+    { todo_list_id: params[:todo_list_id] }.merge(super)
+  end
+
   private
 
     def set_todo_list
