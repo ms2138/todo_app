@@ -20,6 +20,18 @@ class TodoItemsController < ApplicationController
   end
 
   def edit
+    @todo_item = @todo_list.todo_items.find(params[:id])
+  end
+
+  def update
+    respond_to do |format|
+      @todo_item = @todo_list.todo_items.find(params[:id])
+      if @todo_item.update(todo_item_params)
+        format.html { redirect_to todo_list_todo_items_path, flash: { success: "Updated todo item." } }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def destroy
