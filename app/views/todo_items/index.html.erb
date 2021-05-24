@@ -21,9 +21,8 @@
               <td class="status">
                 <% if todo_item.completed? %>
                   <span class="completed">
-                    <%= todo_item.completed_at.to_formatted_s(:month_day_and_year_time) %>
+                    <%= local_time(todo_item.completed_at) %>
                   </span>
-                  
                 <% else %>
                   <%= link_to 'Mark Complete', complete_todo_list_todo_item_path(todo_item), method: :patch, class: "uncompleted" %>
                 <% end %>

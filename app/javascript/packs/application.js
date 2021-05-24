@@ -18,3 +18,6 @@ require("channels")
 import 'bootstrap'
 import '../stylesheets/application'
 import '@fortawesome/fontawesome-free/css/all'
+import LocalTime from "local-time"
+
+LocalTime.start()
