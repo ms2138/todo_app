@@ -2,15 +2,30 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @todo_list.title %>
-</p>
+<div class="center">
+  <h3><%= link_to @todo_list.description, todo_list_todo_items_path(@todo_list) %></h3>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @todo_list.description %>
-</p>
-
-<%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
-<%= link_to 'Back', todo_lists_path %>
+<div class="card-deck">
+  <% if @todo_list.has_completed_items? %>
+    <div class="card border-success">
+      <h5 class="card-header bg-success">Completed Items</h5>
+      <ul class="list-group list-group-flush">
+        <% @todo_list.todo_items.complete.each do |todo_item| %>
+          <li class="list-group-item"><%= todo_item.content %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if @todo_list.has_incomplete_items? %>
+    <div class="card border-warning">
+        <h5 class="card-header bg-warning">Incomplete items</h5>
+        <ul class="list-group list-group-flush">
+          <% @todo_list.todo_items.incomplete.each do |todo_item| %>
+            <li class="list-group-item"><%= todo_item.content %></li>
+          <% end %>
+          </ul>
+      </div>
+    </div>
+    <% end %>
+</div>
