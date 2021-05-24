@@ -1,2 +1,6 @@
-<h1>TodoItems#edit</h1>
-<p>Find me in app/views/todo_items/edit.html.erb</p>
+<% provide(:title, 'Edit') %>
+<% provide(:button_text, 'Update Todo Item') %>
+
+<h1>Editing todo item</h1>
+
+<%= render 'form', todo_item: @todo_item %>
