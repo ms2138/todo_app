@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+50.times do |i|
+  title = Faker::Lorem.sentence
+  description = Faker::Lorem.sentence(word_count: 5, supplemental: true, random_words_to_add: 4)
+  todo_list = TodoList.create(title: title, description: description)
+  20.times do |j|
+    content = Faker::Lorem.sentence(word_count: 6, supplemental: true, random_words_to_add: 4)
+    todo_list.todo_items.new(content: content)
+  end
+  todo_list.save
+end
