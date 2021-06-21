@@ -39,7 +39,7 @@ class TodoItemsController < ApplicationController
     @todo_item = @todo_list.todo_items.find(params[:id])
     @todo_item.destroy
     respond_to do |format|
-      format.html { redirect_to todo_list_todo_items_path, flash: { success: "Todo item was successfully destroyed." } }
+      format.html { redirect_back(fallback_location: todo_list_todo_items_path, flash: { success: "Todo item was successfully destroyed." }) }
     end
   end
 
@@ -48,7 +48,6 @@ class TodoItemsController < ApplicationController
     @todo_item.update_attribute(:completed_at, Time.now)
     respond_to do |format|
       format.html { redirect_back(fallback_location: todo_list_todo_items_path, flash: { success: "Todo item marked as complete." }) }
-      #format.html { redirect_to todo_list_todo_items_path, flash: { success: "Todo item marked as complete." } }
     end
   end 
 
