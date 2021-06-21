@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-md-12">
-  <% if @todo_list.todo_items.present? %>
+  <% if @todo_items.present? %>
     <div class="table-responsive-lg">
       <table class="table">
         <thead>
@@ -15,7 +15,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @todo_list.todo_items.each do |todo_item| %>
+          <% @todo_items.each do |todo_item| %>
             <tr id="<%= dom_id(todo_item)%>">
               <td> <%= todo_item.content %> </td>
               <td class="status">
@@ -40,6 +40,7 @@
         </tbody>
       </table>
     </div>
+    <%= paginate @todo_items %>
     <%= link_to 'New Todo Item', new_todo_list_todo_item_path, class: "btn btn-primary" %>
     <% else %>
       <div class="card text-center">

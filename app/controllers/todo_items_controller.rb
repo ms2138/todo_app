@@ -2,6 +2,7 @@ class TodoItemsController < ApplicationController
   before_action :set_todo_list
 
   def index
+    @todo_items = @todo_list.todo_items.order(created_at: :desc).page(params[:page]).per(15)
   end
 
   def new
@@ -46,7 +47,8 @@ class TodoItemsController < ApplicationController
     @todo_item = @todo_list.todo_items.find(params[:id])
     @todo_item.update_attribute(:completed_at, Time.now)
     respond_to do |format|
-      format.html { redirect_to todo_list_todo_items_path, flash: { success: "Todo item marked as complete." } }
+      format.html { redirect_back(fallback_location: todo_list_todo_items_path, flash: { success: "Todo item marked as complete." }) }
+      #format.html { redirect_to todo_list_todo_items_path, flash: { success: "Todo item marked as complete." } }
     end
   end 
 
